@@ -12,8 +12,9 @@ public class ImageBoardDto {
     private String productname;
     private String category;
     private String brandname;
+    private String price;
     private String itemdetals;
     private String amount;
     private String size;
-    private MultipartFile[] files;
+    private MultipartFile[] files; // 해당 파일 정보를 여기에 저장
 }

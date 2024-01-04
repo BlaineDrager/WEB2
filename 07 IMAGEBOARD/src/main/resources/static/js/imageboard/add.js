@@ -70,6 +70,7 @@
 		add_product_btn_el.addEventListener('click',function(){ // 해당 이벤트를 클릭했을 떄의 함수 처리
             const seller = document.imageform.seller.value; // html 의 정보를 가지고 오기
             const productname = document.imageform.productname.value;
+            const price = document.imageform.price.value;
             const category = document.imageform.category.value;
             const brandname = document.imageform.brandname.value;
             const itemdetals = document.imageform.itemdetals.value;
@@ -78,6 +79,7 @@
 
             formData.append('seller',seller);
             formData.append('productname',productname);
+            formData.append('price',price);
             formData.append('category',category);
             formData.append('brandname',brandname);
             formData.append('itemdetals',itemdetals);
@@ -85,6 +87,10 @@
             formData.append('size',size);
 
             axios.post('/imageboard/add', formData, {header : {'Content-Type' : 'multipart/form-data'}}) // /imageboard/add POST로 던짐 // 'params'엔 formData를 넣고 //  'header'엔 {header : {'Content-Type' : 'multipart/form-data'}}를 넣음 // multipart 를 통해 파일 정보를 조각 내어서 전달하게 만들어 후에 어셈블 시킴
-                .then(res => {console.log(res);})
+                .then(res => {
+                    console.log(res);
+                    alert("물품 등록을 완료했습니다");
+                    location.href="/imageboard/list";
+                })
                 .catch(err => {console.log(err);});
 		})

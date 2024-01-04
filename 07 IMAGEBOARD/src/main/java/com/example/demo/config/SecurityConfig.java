@@ -58,14 +58,17 @@ public class SecurityConfig  {
         //요청 URL별 접근 제한
         http.authorizeHttpRequests(
                 authorize->{
-//                    authorize.requestMatchers("/js/**","/css/**","/images/**","/templates").permitAll();
-//                    authorize.requestMatchers("/login","/user/**","/image/post").permitAll();
-//                    authorize.requestMatchers("/join").hasRole("ANONYMOUS");
-//                    authorize.requestMatchers("/").hasAnyRole("USER","ADMIN");
+                    authorize.requestMatchers("/js/**","/css/**","/images/**","/templates").permitAll();
+                    authorize.requestMatchers("/login","/user/**","/image/post").permitAll();
+                    authorize.requestMatchers("/join").hasRole("ANONYMOUS");
+                    authorize.requestMatchers("/imageboard/add").hasRole("SELLER");
+                    authorize.requestMatchers("/imageboard/list","/imageboard/read").hasAnyRole("USER","SELLER","ADMIN"); // list 와 read에 접근가능한 클라이언트 종류 선택
+                    authorize.requestMatchers("/cart/**").hasRole("USER");
+                    authorize.requestMatchers("/").hasAnyRole("USER","ADMIN","SELLER");
 //
 //
 //                    authorize.anyRequest().authenticated();
-                    authorize.requestMatchers("/**").permitAll();
+                    // authorize.requestMatchers("/**").permitAll();
                 }
         );
         //로그인

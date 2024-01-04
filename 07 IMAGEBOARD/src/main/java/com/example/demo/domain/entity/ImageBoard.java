@@ -21,6 +21,7 @@ public class ImageBoard {
     private Long id;
     private String seller;
     private String productname;
+    private String price;
     private String category;
     private String brandname;
     private String itemdetals;
@@ -29,6 +30,6 @@ public class ImageBoard {
 
     private LocalDateTime createAt;
 
-    @ElementCollection
-    private List<String> files; // List<String> 는 데이터 타입이 바이너리임 그렇기에 위에 @ElementCollection를 추가 해줘서 파일명만 따로 저장시킴
+
+    private List<String> files; // List<String> 는 데이터 타입이 바이너리임 그렇기에 위의 @ElementCollection 을 추가 해줘서 파일명만 따로 저장시킬 수 있게 함
 }
